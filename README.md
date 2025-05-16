@@ -1,5 +1,7 @@
 # BotCity Automation Template
 
+![alt text](resources/botcity-template.gif)
+
 A professional boilerplate for creating robust automations with [BotCity](https://www.botcity.dev), supporting both **Web** and **Desktop** scenarios. This template leverages:
 
 * **Singleton** `BotManager` for centralized bot web and desktop configuration
@@ -69,11 +71,38 @@ All environment variables are loaded and validated by `config/constants/variable
 
 ## 🚀 Usage
 
-### 1. Update Resources
+### 1. Clone the Repository & Navigate
+```bash
+git clone <REPO_URL>
+cd botcity-template
+```
+
+### 2. Create & Activate Virtual Environment (Recommended)
+
+Windows
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+macOS / Linux
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Upgrade pip & Install Dependencies
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 4. Update Resources
 
 Place any desktop vision assets (e.g., `2_button.png`, `x_button.png`) under `resources/`.
 
-### 2. Configure Environment
+### 5. Configure Environment
 
 Copy the example environment file and customize it:
 
@@ -83,7 +112,7 @@ cp .env.example .env
 
 Edit the .env file as needed (e.g., browser, headless, base URL).
 
-### 3. Run the Automation
+### 6. Run the Automation
 
 ```bash
 python main.py
