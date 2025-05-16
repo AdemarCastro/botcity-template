@@ -150,18 +150,18 @@ def find_and_type(bot, selector, text, label=""): ...
 ### Main Script (`bot.py`)
 
 ```python
-from manager import BotManager
-from helpers.web_helpers import find_and_click, find_and_type
+from modules.BotManager import BotManager
+from helpers.web_helpers import click, find_and_click
 
 def main():
     desktop = BotManager.get_desktop_instance()
-    web = BotManager.get_web_instance()
+    webbot = BotManager.get_web_instance()
     # Desktop example
-desktop.execute("calc.exe")
-    find_and_click(desktop, "2_button.png", "Button 2")
+    desktop.execute("calc.exe")
+    click(desktop, "2_button.png", "Button 2")
     # Web example
-    web.browse(BASE_URL)
-    find_and_click(web, "//a[text()='Platform']", "Platform link")
+    webbot.browse(BASE_URL)
+    find_and_click(webbot, "//a[text()='Platform']", "Platform link")
 ```
 
 ---
