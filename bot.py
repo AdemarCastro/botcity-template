@@ -43,13 +43,11 @@ def main():
     print("Opening BotCity website...")
     webbot.browse(BASE_URL)
 
-    input("Pressione Enter para continuar...")
+    webbot.wait(3000)
 
-    xpath_cookie = "//*[@id='hs-eu-confirmation-button']"
-    find_and_click(webbot, xpath_cookie, label="Cookie button")
+    find_and_click(webbot=webbot, selector="//*[@id='hs-eu-confirmation-button']", label="Accept Cookies", by=By.XPATH)
 
-    xpath_login = "/html/body/div[4]/main/div[1]/div[1]/nav/div[2]/a[1]"
-    find_and_click(webbot, xpath_login, label="Login button")
+    find_and_click(webbot=webbot, selector="/html/body/div[4]/main/div[1]/div[1]/nav/div[2]/a[1]", label="Login", by=By.XPATH)
 
     webbot.wait(3000)
     webbot.stop_browser()
