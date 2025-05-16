@@ -7,4 +7,4 @@ load_dotenv()
 HEADLESS = os.getenv("HEADLESS", "False").lower() == "true"
 BROWSER = os.getenv("BROWSER", "chrome").lower()
 DOWNLOAD_FOLDER = os.getenv("DOWNLOAD_FOLDER", "downloads")
-BASE_URL = os.getenv("BASE_URL", required=True)
+BASE_URL = os.getenv("BASE_URL")
