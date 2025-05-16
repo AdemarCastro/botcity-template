@@ -5,35 +5,38 @@ def not_found(label):
 
 def click(bot, label, matching=0.97, waiting_time=10000):
     """
-    Helper function to find and click an element in DesktopBot.
+    Helper function to find and click an element in DesktopBot using try/except.
     """
-    if bot.find(label, matching=matching, waiting_time=waiting_time):
+    try:
+        bot.find(label, matching=matching, waiting_time=waiting_time)
         bot.click()
         print(f"{label} clicked.")
-    else:
+    except Exception:
         not_found(label)
 
 def find_and_click(webbot, selector: str, label: str = "", by=By.XPATH, waiting_time=10000):
     """
     Find an element and click it. Logs success or not found.
     """
-    if webbot.find_element(selector, by=by, waiting_time=waiting_time):
-        webbot.click_element(selector, by=by)
+    try:
+        element = webbot.find_element(selector, by=by, waiting_time=waiting_time)
+        element.click()
         print(f"[INFO] Clicked: {label or selector}")
         return True
-    else:
+    except Exception:
         not_found(label or selector)
         return False
 
 def find_and_type(webbot, selector: str, text: str, label: str = "", by=By.XPATH, waiting_time=10000):
     """
-    Find an element and type text into it. Logs success or not found.
+    Find an element and type text into it using try/except.
     """
-    if webbot.find_element(selector, by=by, waiting_time=waiting_time):
+    try:
+        webbot.find_element(selector, by=by, waiting_time=waiting_time)
         webbot.type_keys(selector, text, by=by)
         print(f"[INFO] Typed into {label or selector}: '{text}'")
         return True
-    else:
+    except Exception:
         not_found(label or selector)
         return False
 
@@ -41,9 +44,10 @@ def find_elements_safe(webbot, selector: str, label: str = "", by=By.XPATH, wait
     """
     Safely find multiple elements. Returns empty list if none found.
     """
-    elements = webbot.find_elements(selector, by=by, waiting_time=waiting_time)
-    if elements:
+    try:
+        elements = webbot.find_elements(selector, by=by, waiting_time=waiting_time)
         print(f"[INFO] Found {len(elements)} elements for {label or selector}")
-    else:
+        return elements
+    except Exception:
         not_found(label or selector)
-    return elements or []
+        return []
